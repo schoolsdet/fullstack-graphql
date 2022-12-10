@@ -40,10 +40,10 @@ services:
     depends_on:
       - redis
 
-  app:
+  backend:
     build: 
       dockerfile: Dockerfile
-      context: "."
+      context: "./backend"
     restart: always
     environment:
       - NODE_ENV=development
@@ -55,11 +55,25 @@ services:
       - MONGO_PASSWORD=${MONGO_PASSWORD}
       - REDIS_HOST=${REDIS_HOST}
       - REDIS_PORT=${REDIS_PORT}
-    ports:
-      - "${APP_PORT}:${APP_PORT}"
     depends_on:
       - mongo
       - redis
+
+  frontend:
+    build: 
+      dockerfile: Dockerfile
+      context: "./frontend"
+    restart: always
+    depends_on:
+      - backend
+
+  proxy:
+    build: 
+      dockerfile: Dockerfile
+      context: "./proxy"
+    restart: always
+    ports:
+      - "127.0.0.1:${PROXY_PORT}:8080"
 
 volumes:
   mongo:

@@ -29,8 +29,9 @@ const createClient = (initialState, { ctx } = {}) => {
     };
   });
 
+  
   const httpLink = createHttpLink({
-    uri: 'http://localhost:4000',
+    uri: isBrowser ? `${window.location.origin}/api/` : `http://localhost:${process.env.APP_PORT}/`,
     fetch: !isBrowser && fetch,
   });
 
