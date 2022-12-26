@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      RELEASE_DIR: '/tmp/mern-commerce'
+      RELEASE_DIR: 'fullstack-graphql'
 
     #todo: add build tests
 
