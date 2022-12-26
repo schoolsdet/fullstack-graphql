@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      RELEASE_DIR: 'fullstack-graphql'
+      RELEASE_DIR: '/tmp/fullstack-graphql'
 
     #todo: add build tests
 
