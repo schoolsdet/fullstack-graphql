@@ -8,6 +8,7 @@ const db = require('./db');
     console.log('[MONGO] Connected');
   } catch (err) {
     console.log(`[MONGO] Error: ${err}`);
+    process.exit(1);
   }
 
   const app = await startServer();
